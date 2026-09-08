@@ -71,11 +71,30 @@ pre{white-space:pre-wrap;word-break:break-word;background:#111827;color:#e5e7eb;
   </div>
 
   <div class="card">
-    <h3>查询短信</h3>
-    <div class="grid">
-      <div><label>手机号</label><input id="smsPhone" placeholder="获取号码后自动填入"></div>
-      <div><label>项目关键词</label><input id="smsKeyWord" placeholder="与 getPhone 使用的项目关键词一致"></div>
+  <h3>查询短信</h3>
+  <div class="grid">
+    <!-- 手机号输入框 -->
+    <div>
+      <label>手机号</label>
+      <input id="smsPhone" placeholder="获取号码后自动填入">
     </div>
+    
+    <!-- 项目关键词：支持手动输入 + 下拉选择 -->
+    <div>
+      <label>项目关键词</label>
+      <!-- 1. 将 select 替换为 input，并通过 list 属性绑定 datalist -->
+      <input id="smsKeyWord" list="keywordOptions" placeholder="请选择或输入项目关键词">
+      
+      <!-- 2. 定义下拉框的选项（id 必须与 input 的 list 属性一致） -->
+      <datalist id="keywordOptions">
+        <option value="畅特">
+        <option value="小雨">
+        <option value="一米">
+      </datalist>
+    </div>
+  </div>
+</div>
+  
     <div class="actions">
       <button onclick="getMessage()">查询短信</button>
       <button class="warn" id="pollBtn" onclick="togglePolling()">开始自动轮询</button>
